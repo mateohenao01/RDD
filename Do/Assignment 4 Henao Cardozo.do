@@ -39,14 +39,14 @@ ssc install cmogram
 cmogram acc bac1, cut(0.08) scatter line(0.08) lfitci title("Balance Test For ACC With Linear Fit") graphopts(xline(0.08) lc(black))
 cmogram acc bac1, cut(0.08) scatter line(0.08) qfitci title("Balance Test For ACC With Quadratic Fit")graphopts(xline(0.08) lc(black)) 
 *Balance test for Male
-cmogram male bac1, cut(0.08) scatter line(0.08) lfitci title("balance test for Male with linear fit") graphopts(xline(0.08) lc(black)) 
-cmogram male bac1, cut(0.08) scatter line(0.08) qfitci title("Balance Test For Male With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
+cmogram male bac1 if bac1<0.3, cut(0.08) scatter line(0.08) lfitci title("balance test for Male with linear fit") graphopts(xline(0.08) lc(black)) 
+cmogram male bac1 if bac1<0.3, cut(0.08) scatter line(0.08) qfitci title("Balance Test For Male With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
 *Balance test for Age
-cmogram aged bac1, cut(0.08) scatter line(0.08) lfitci title("Balance Test For Age With Linear Fit") graphopts(xline(0.08) lc(black)) 
-cmogram aged bac1, cut(0.08) scatter line(0.08) qfitci title("Balance Test For Age With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
+cmogram aged bac1 if bac1<0.3, cut(0.08) scatter line(0.08) lfitci title("Balance Test For Age With Linear Fit") graphopts(xline(0.08) lc(black)) 
+cmogram aged bac1 if bac1<0.3, cut(0.08) scatter line(0.08) qfitci title("Balance Test For Age With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
 *Balance test for white
-cmogram white bac1, cut(0.08) scatter line(0.08) lfitci title("Balance Test For White With Linear Fit") graphopts(xline(0.08) lc(black)) 
-cmogram white bac1, cut(0.08) scatter line(0.08) qfitci title("Balance Test For White With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
+cmogram white bac1 if bac1<0.3, cut(0.08) scatter line(0.08) lfitci title("Balance Test For White With Linear Fit") graphopts(xline(0.08) lc(black)) 
+cmogram white bac1 if bac1<0.3, cut(0.08) scatter line(0.08) qfitci title("Balance Test For White With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
 
 //7. Estimate equation (1) with recidivism (recid) as the outcome. Recrate table 3
 
@@ -71,6 +71,6 @@ outreg2 [control interact quad control2 interact2 quad2] using reg.xls, dec(4) t
 //8. Recreate the top panel of figure 3
 
 *Linear fit
-cmogram recidivism bac1, cut(0.08) scatter line(0.08) lfitci title("Balance Test For ACC With Linear Fit") graphopts(xline(0.08) lc(black))
+cmogram recidivism bac1 if bac1<0.15, cut(0.08) scatter line(0.08) lfitci title("Balance Test For ACC With Linear Fit") graphopts(xline(0.08) lc(black))
 *Quadratic fit
-cmogram recidivism bac1, cut(0.08) scatter line(0.08) qfitci title("Balance Test For ACC With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
+cmogram recidivism bac1 if bac1<0.15, cut(0.08) scatter line(0.08) qfitci title("Balance Test For ACC With Quadratic Fit") graphopts(xline(0.08) lc(black)) 
