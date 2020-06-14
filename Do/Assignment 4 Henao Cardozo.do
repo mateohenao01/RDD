@@ -53,20 +53,20 @@ cmogram white bac1, cut(0.08) scatter line(0.08) qfitci title("Balance Test For 
 *Panel A: bandwidth of 0.05
 gen bac1sq= bac1^2
 xi: reg recidivism DUI bac1 $aged white male $year if bac1>0.03 & bac1<0.13, r
-estout control
-xi: reg recidivism i.DUI*c.bac1 $aged white male $year if bac1>0.03 & bac1<0.13, r
-estout interact
-xi: reg recidivism i.DUI*c.(bac1 bac1sq) $aged white male $year if bac1>0.03 & bac1<0.13, r
-estout quad
+est store control
+xi: reg recidivism DUI##c.bac1 $aged white male $year if bac1>0.03 & bac1<0.13, r
+est store interact
+xi: reg recidivism DUI##c.(bac1 bac1sq) $aged white male $year if bac1>0.03 & bac1<0.13, r
+est store quad
 
 *Panel B: bandwidth of 0.025
 xi: reg recidivism i.DUI bac1 $aged white male $year if bac1>0.055 & bac1<0.105, r
-estout control2
-xi: reg recidivism i.DUI*c.bac1 $aged white male $year if bac1>0.055 & bac1<0.105, r
-estout interact2
-xi: reg recidivism i.DUI*c.(bac1 bac1sq) $aged white male $year if bac1>0.055 & bac1<0.105, r
-estout quad2
-outreg2 [control interact quad control2 interact2 quad2] using reg.xls, dec(4)
+est store control2
+xi: reg recidivism DUI##c.bac1 $aged white male $year if bac1>0.055 & bac1<0.105, r
+est store interact2
+xi: reg recidivism DUI##c.(bac1 bac1sq) $aged white male $year if bac1>0.055 & bac1<0.105, r
+est store quad2
+outreg2 [control interact quad control2 interact2 quad2] using reg.xls, dec(4) title("Table 3-Regression Discontinuity Estimates For The Effect of Exceeding The 0.08 BAC Threshold On Recidivism")
 
 //8. Recreate the top panel of figure 3
 
